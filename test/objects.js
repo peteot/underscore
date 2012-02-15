@@ -532,4 +532,12 @@ $(document).ready(function() {
       value();
     ok(returned == 6 && intercepted == 6, 'can use tapped objects in a chain');
   });
+  
+  test("objects: beget", function() {
+    var original = {a: 1};
+    var begat = _.beget(original);
+    equal(original.a, begat.a, "new object inherits original object's property");
+    begat.a = 2;
+    ok(((begat.a - original.a) == 1), "new object overrides original object's own property without modifying it"); 
+  });
 });
